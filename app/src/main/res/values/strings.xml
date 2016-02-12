@@ -5,4 +5,7 @@
     <string name="red_score">Red: %d</string>
     <string name="yellow_score">Yellow: %d</string>
     <string name="new_game">New Game</string>
+    <string name="red_win">"Red wins!"</string>
+    <string name="yellow_win">"Yellow wins!"</string>
+    <string name="play_again">Play Again</string>
 </resources>
