@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -67,19 +66,26 @@ public class MainActivity extends AppCompatActivity
             counter.animate().translationYBy(1000f).rotation(360).setDuration
                     (300);
 
-            TextView txtVw_Winner;
+            TextView txtVw_GameResult = txtVw_GameResult = (TextView)
+                    findViewById(R.id.game_result);
 
             // Check if the player won
-            for (int[] winningPosition : winningPositions)
+            for (int i = 0; i < winningPositions.length; i++)
+//            for (int[] winningPosition : winningPositions)
             {
-                if (gameState[winningPosition[0]] ==
-                        gameState[winningPosition[1]] &&
-                        gameState[winningPosition[1]] ==
-                                gameState[winningPosition[2]] &&
-                        gameState[winningPosition[0]] != 2)
+//                for (int n)
+//                if (gameState[winningPosition[i][0]] ==
+//                        gameState[winningPosition[1]] &&
+//                        gameState[winningPosition[1]] ==
+//                                gameState[winningPosition[2]] &&
+//                        gameState[winningPosition[0]] != 2)
+//                {
+                if (gameState[winningPositions[i][0]] ==
+                        gameState[winningPositions[i][1]] &&
+                        gameState[winningPositions[i][1]] ==
+                                gameState[winningPositions[i][2]] &&
+                        gameState[winningPositions[i][0]] != 2)
                 {
-                    txtVw_Winner = (TextView) findViewById(R.id.winner);
-
                     // Display the opposite activePlayer as the winner as we
                     // changed the activePlayer already in the if-else
                     // statements above
@@ -90,7 +96,7 @@ public class MainActivity extends AppCompatActivity
                         red_score.setText(getString(R.string.red_score,
                                 playerScore.get(1)));
 
-                        txtVw_Winner.setText(R.string.red_win);
+                        txtVw_GameResult.setText(R.string.red_win);
                     }
                     else
                     {
@@ -99,7 +105,7 @@ public class MainActivity extends AppCompatActivity
                         yellow_score.setText(getString(R.string.yellow_score,
                                 playerScore.get(0)));
 
-                        txtVw_Winner.setText(R.string.yellow_win);
+                        txtVw_GameResult.setText(R.string.yellow_win);
                     }
 
                     board = (GridLayout) findViewById(R.id
@@ -113,16 +119,55 @@ public class MainActivity extends AppCompatActivity
                     LinearLayout play_again = (LinearLayout) findViewById(R
                             .id.play_again);
                     play_again.setVisibility(View.VISIBLE);
+
+                    return;
+                }
+                else if (i == winningPositions.length - 1)
+                {
+                    // Check if game is over only on last iteration of
+                    // winningPositions. If the game is over and we exited
+                    // immediately, we may miss a case where all slots are
+                    // filled but someone actually won
+                    Log.i("isGameOver(): ", "" + isGameOver());
+
+                    // Check if game ended in a tie
+                    if (isGameOver())
+                    {
+                        txtVw_GameResult.setText(R.string.tie);
+
+                        // Make the play again Linear Layout visible
+                        LinearLayout play_again = (LinearLayout) findViewById(R
+                                .id.play_again);
+                        play_again.setVisibility(View.VISIBLE);
+
+                        return;
+                    }
                 }
             }
-
-            // todo need to check if the game ended in a tie
         }
         else
         {
             Toast.makeText(getApplicationContext(), "Already occupied! Choose" +
                     " another board slot!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    /**
+     * Returns whether the game is over or not
+     *
+     * @return True if game is over, false otherwise
+     */
+    public boolean isGameOver()
+    {
+        for (int counterState : gameState)
+        {
+            if (counterState == 2)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
