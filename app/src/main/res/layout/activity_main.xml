@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.theboss.jackli.tictactoe.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:id="@+id/view">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:background="@drawable/board"
+        android:columnCount="4"
+        android:rowCount="4"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/game_board">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/imageView"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_margin="10dp"
+            android:onClick="dropIn"
+            android:tag="0"/>
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/imageView2"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:onClick="dropIn"
+            android:tag="1"/>
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/imageView3"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:onClick="dropIn"
+            android:tag="2"/>
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/imageView4"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:onClick="dropIn"
+            android:layout_margin="10dp"
+            android:layout_marginTop="25dp"
+            android:tag="3"/>
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/imageView5"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:onClick="dropIn"
+            android:tag="4"/>
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/imageView6"
+            android:layout_row="1"
+            android:layout_column="2"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:onClick="dropIn"
+            android:tag="5"/>
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/imageView7"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:onClick="dropIn"
+            android:tag="6"/>
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/imageView8"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:onClick="dropIn"
+            android:tag="7"/>
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/imageView9"
+            android:layout_row="2"
+            android:layout_column="2"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="25dp"
+            android:onClick="dropIn"
+            android:tag="8"/>
+    </GridLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/red_score"
+        android:id="@+id/red_score"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/btn_new_game"
+        android:layout_alignRight="@+id/yellow_score"
+        android:layout_alignEnd="@+id/yellow_score"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/yellow_score"
+        android:id="@+id/yellow_score"
+        android:textColor="#ffd501"
+        android:textSize="20dp"
+        android:layout_below="@+id/red_score"
+        android:layout_toRightOf="@+id/btn_new_game"
+        android:layout_toEndOf="@+id/btn_new_game"
+        android:layout_marginLeft="42dp"
+        android:layout_marginStart="42dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_game"
+        android:id="@+id/btn_new_game"
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp"
+        android:layout_below="@+id/game_board"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp"
+        android:background="#00ff15"
+        android:nestedScrollingEnabled="false"
+        android:onClick="onClick"/>
+
+</RelativeLayout>
