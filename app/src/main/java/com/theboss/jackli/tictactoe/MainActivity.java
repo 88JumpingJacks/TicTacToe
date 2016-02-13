@@ -14,8 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -71,15 +69,7 @@ public class MainActivity extends AppCompatActivity
 
             // Check if the player won
             for (int i = 0; i < winningPositions.length; i++)
-//            for (int[] winningPosition : winningPositions)
             {
-//                for (int n)
-//                if (gameState[winningPosition[i][0]] ==
-//                        gameState[winningPosition[1]] &&
-//                        gameState[winningPosition[1]] ==
-//                                gameState[winningPosition[2]] &&
-//                        gameState[winningPosition[0]] != 2)
-//                {
                 if (gameState[winningPositions[i][0]] ==
                         gameState[winningPositions[i][1]] &&
                         gameState[winningPositions[i][1]] ==
